@@ -1,0 +1,248 @@
+{
+  "version": "1.0",
+  "tool": "website_one_page",
+  "seed_url": "https://www.learner.org/series/chemistry-challenges-and-solutions/control-a-haber-bosch-ammonia-plant/",
+  "seed_origin": "https://www.learner.org:443",
+  "seed_host": "www.learner.org",
+  "final_url": "https://www.learner.org/series/chemistry-challenges-and-solutions/control-a-haber-bosch-ammonia-plant/",
+  "final_host": "www.learner.org",
+  "origin_lock_mode": "host_only",
+  "captured_at": "2026-04-23T16:40:34.440325Z",
+  "base_href_used": false,
+  "base_href_value": null,
+  "budgets": {
+    "max_pages": 1,
+    "max_assets": 200,
+    "max_assets_per_page": 200,
+    "max_redirects": 5,
+    "max_css_import_depth": 2,
+    "max_html_bytes": 2097152,
+    "max_css_bytes": 1048576,
+    "max_asset_bytes": 104857600,
+    "max_total_asset_bytes": 52428800
+  },
+  "budgets_used": {
+    "pages": 1,
+    "assets": 41,
+    "total_asset_bytes": 1231991
+  },
+  "counts": {
+    "html_pages": 1,
+    "assets_total": 51,
+    "assets_included": 41,
+    "assets_excluded": 10
+  },
+  "excluded": [
+    {
+      "url": "https://js-na2.hs-analytics.net/analytics/1776954000000/47917809.js",
+      "reason": "cross_origin_blocked"
+    },
+    {
+      "url": "https://js-na2.hs-banner.com/v2/47917809/banner.js",
+      "reason": "cross_origin_blocked"
+    },
+    {
+      "url": "https://js.hs-scripts.com/47917809.js",
+      "reason": "cross_origin_blocked"
+    },
+    {
+      "url": "https://static.addtoany.com/menu/modules/core.ydpp7jcu.js",
+      "reason": "cross_origin_blocked"
+    },
+    {
+      "url": "https://static.addtoany.com/menu/page.js",
+      "reason": "cross_origin_blocked"
+    },
+    {
+      "url": "https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516",
+      "reason": "cross_origin_blocked"
+    },
+    {
+      "url": "https://use.typekit.net/eft3dyn.css",
+      "reason": "cross_origin_blocked"
+    },
+    {
+      "url": "https://www.google-analytics.com/analytics.js",
+      "reason": "cross_origin_blocked"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-1ELHV6ZK2M&cx=c&gtm=4e64m0",
+      "reason": "cross_origin_blocked"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=UA-26585307-3",
+      "reason": "cross_origin_blocked"
+    }
+  ],
+  "mapping": {
+    "https://www.learner.org/wp-content/plugins/add-to-any/addtoany.min.css?ver=1.16": {
+      "local_path": "assets/c19e3e4151ea4933fa9ba9703c51fe20ad469237771214b1c5001d1b107ddef5.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/plugins/elementor-pro/assets/css/modules/sticky.min.css?ver=4.0.2": {
+      "local_path": "assets/6f0b2e96bd88c2d8512dfd204adaf2251376467a1f834a51c66ce85f0051979d.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/plugins/elementor-pro/assets/css/widget-nav-menu.min.css?ver=4.0.2": {
+      "local_path": "assets/473b9f40473239df974449ef35f63d85010f41b91b8d3a87e2f79fb7692283be.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/plugins/elementor-pro/assets/css/widget-search-form.min.css?ver=4.0.2": {
+      "local_path": "assets/7cf3657191ade2f481ded3d522fc5edb464146aa3a473a5767218521ef17325d.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/plugins/elementor/assets/css/conditionals/apple-webkit.min.css?ver=4.0.2": {
+      "local_path": "assets/cf502b45ef8bcae37a65822f78546f6cc7db74faf8f48850bf8a860262817fe6.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=4.0.2": {
+      "local_path": "assets/0a5d398672e25dc7f020f69df92a985481b248a60e301fee232d0c8afd648dc5.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/plugins/elementor/assets/css/widget-alert.min.css?ver=4.0.2": {
+      "local_path": "assets/fb359cceaf17e07dac6162c794ad9dcad77fbf31b4e44bcba929479ab3e3ebac.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/plugins/elementor/assets/css/widget-heading.min.css?ver=4.0.2": {
+      "local_path": "assets/f68e889145cb0e47b7b190b2fdf087a9213a264ad33951512880c9f8bb6d0cd8.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/plugins/elementor/assets/css/widget-image.min.css?ver=4.0.2": {
+      "local_path": "assets/fb8690e594b2f9b841585895d811e8cb839667a1a63963d1a1cdea11e2aa2abb.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/plugins/elementor/assets/css/widget-social-icons.min.css?ver=4.0.2": {
+      "local_path": "assets/91079644ee1e76145b30c207470b56866770b0564f0fbf1373ab8b11d94f8c9f.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=5.48.0": {
+      "local_path": "assets/d5d31cbae4de184c0516238a40a9165798ce33cf23d811c1ba95258624c69fb3.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.min.css?ver=5.15.3": {
+      "local_path": "assets/9cd63b8cea25045c14623c538d26752518a58c0c682795ce6ad3078976c65a37.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min.css?ver=5.15.3": {
+      "local_path": "assets/fafc4160788beca657ec3e3041976281fb6d54a0e82bb4d22a433f7c6bb8b1d6.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min.css?ver=5.15.3": {
+      "local_path": "assets/37bab6cd583982e8eff58501a99d7c5c4d63664c1ca34f9e3b7cf526c5b73ae2.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/plugins/geotargetingwp/public/css/geotarget-public.min.css?ver=6.9.4": {
+      "local_path": "assets/751c3152934bf2df8ec036ad72cd8100c1b5260b539070d0f0a1f6be91aff5d9.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/plugins/jet-engine/assets/css/frontend.css?ver=3.8.8": {
+      "local_path": "assets/015739ef248057177bcea1b2b31f72689536c9810295d41b5a1d23a83387b7ca.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/plugins/search-filter-pro/public/assets/css/search-filter.min.css?ver=2.4.6": {
+      "local_path": "assets/bbdee6a5cee7911ffed204b01e8798ff1ab500d754e0db2ae6be306c3567a37b.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/themes/learner-custom/favicon.png": {
+      "local_path": "assets/ef09a863f9dac62d2ed2ca995c7674a710a1c773ee550d926f72ecd5eec13b31.png",
+      "content_type": "image/png"
+    },
+    "https://www.learner.org/wp-content/themes/learner-custom/images/apple-icon-touch.png": {
+      "local_path": "assets/7eb0094456f3388909886ff53e85b5af365902cb75270717d8039e77821a7266.png",
+      "content_type": "image/png"
+    },
+    "https://www.learner.org/wp-content/themes/learner-custom/style.min.css?ver=1776906586": {
+      "local_path": "assets/94d0eba27bec4a96e8ea6037eaa7b9804f88638619ec7a5ec088cd5a11ca6e78.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/uploads/2019/02/chemistry-1-matter-rise-atomic-fig1-436x254.jpg": {
+      "local_path": "assets/540ba7bffd5f02b559228d9f4dd6f0e9a26ca4327e58a16410008d6d8a9791ff.jpeg",
+      "content_type": "image/jpeg"
+    },
+    "https://www.learner.org/wp-content/uploads/2019/02/chemistry-10-acids-bases-fig1-2-436x254.jpg": {
+      "local_path": "assets/a4cbead598a1f034505b7ded93488988543b8df63bd4da1fbb42ac6b7c74f895.jpeg",
+      "content_type": "image/jpeg"
+    },
+    "https://www.learner.org/wp-content/uploads/2019/02/chemistry-11-metallic-world-fig1-436x254.jpg": {
+      "local_path": "assets/4cef94e9ec5a4886d124cfc1a10eb4c87dc366644d17acc320dc4dc554523857.jpeg",
+      "content_type": "image/jpeg"
+    },
+    "https://www.learner.org/wp-content/uploads/2019/02/chemistry-12-kinetics-nuclear-fig1-1-436x254.jpg": {
+      "local_path": "assets/23fb0bd2a07f8e4b7a7a392b6b4808557554cf93ebf36454914a91aaadc63518.jpeg",
+      "content_type": "image/jpeg"
+    },
+    "https://www.learner.org/wp-content/uploads/2019/02/chemistry-13-modern-materials-fig1-1-436x254.jpg": {
+      "local_path": "assets/4e469dfd0bd063484f0f03383c6e549d79c31a54366febbca9854b1a15ae9087.jpeg",
+      "content_type": "image/jpeg"
+    },
+    "https://www.learner.org/wp-content/uploads/2019/02/chemistry-2-behavior-atoms-fig1-436x254.jpg": {
+      "local_path": "assets/b91f4db4f943a4f540d3f44ffa4294c8d6814c1a5511b7451c1c06fcfc03cf17.jpeg",
+      "content_type": "image/jpeg"
+    },
+    "https://www.learner.org/wp-content/uploads/2019/02/chemistry-4-organizing-atoms-fig1-1-436x254.jpg": {
+      "local_path": "assets/8259da1bc9904988a17847f20ed2bc17b56363be4931bc2dfa63cd350fc7247b.jpeg",
+      "content_type": "image/jpeg"
+    },
+    "https://www.learner.org/wp-content/uploads/2019/02/chemistry-5-making-molecules-fig1-1-436x254.jpg": {
+      "local_path": "assets/5dd4649d08a8192784382a731f436e8d43b9e38ba3e10455d61dfba7f9f8acf0.jpeg",
+      "content_type": "image/jpeg"
+    },
+    "https://www.learner.org/wp-content/uploads/2019/02/chemistry-6-quantifying-chemical-fig1-436x254.jpg": {
+      "local_path": "assets/ade502effcdabcfa4179de937e107f1891ad3425b1c456095a0be4da01b585ee.jpeg",
+      "content_type": "image/jpeg"
+    },
+    "https://www.learner.org/wp-content/uploads/2019/02/chemistry-7-energy-in-chemicals-fig1-1-436x254.jpg": {
+      "local_path": "assets/b5edb9f89c0e16d13b9c9c6a3ec7204896aaf9f9232a9fb8860660b8d3a78a37.jpeg",
+      "content_type": "image/jpeg"
+    },
+    "https://www.learner.org/wp-content/uploads/2019/02/chemistry-8-chemicals-meet-water-fig1-1-436x254.jpg": {
+      "local_path": "assets/47b6a5190b79cb7dd6c7864953ad58f9b29971f1bfd72f2aa6683246db4d5502.jpeg",
+      "content_type": "image/jpeg"
+    },
+    "https://www.learner.org/wp-content/uploads/2019/02/chemistry-9-equilibrium-fig1-1-436x254.jpg": {
+      "local_path": "assets/1a90378b0cd59ee6f5c1a19446dbadd1635a2670c8e171f6d19d4cd8237d93a1.jpeg",
+      "content_type": "image/jpeg"
+    },
+    "https://www.learner.org/wp-content/uploads/2022/02/logo-white.svg": {
+      "local_path": "assets/ae6849c5c08968bde62683115477639ae4bed96a6884bcb3688a0f21ba746cab.svg",
+      "content_type": "image/svg+xml"
+    },
+    "https://www.learner.org/wp-content/uploads/2022/02/logo.svg": {
+      "local_path": "assets/8d58ae582bccb64acf661d11bcf3f44181d4cbb41ce4e8f24297d7e28512f85b.svg",
+      "content_type": "image/svg+xml"
+    },
+    "https://www.learner.org/wp-content/uploads/2022/06/Site_bannerr-Show_Name-300x192.png": {
+      "local_path": "assets/586d165e50a78609c91ef1d84933bcc4844b00949e13101f0dc248832a8b07e1.png",
+      "content_type": "image/png"
+    },
+    "https://www.learner.org/wp-content/uploads/2022/06/Site_bannerr-Show_Name.png": {
+      "local_path": "assets/6bdbc090d7df4acf8c55f0013dc2a74d8715854fd495b428f184a60eee1e5e46.png",
+      "content_type": "image/png"
+    },
+    "https://www.learner.org/wp-content/uploads/elementor/css/post-32767.css?ver=1776196695": {
+      "local_path": "assets/1834d98535df18185843e3d702cd0e811a765a36c114fb3de1fe6451904ab46a.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/uploads/elementor/css/post-32775.css?ver=1776196696": {
+      "local_path": "assets/397ad26c00f767681f09be3ce44014e0b3f1ae63bda26a8ae08c34860c04d791.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/uploads/elementor/css/post-32886.css?ver=1776196696": {
+      "local_path": "assets/aecfc89edc14f0314bcf8b944f3c646a4f44b7f4dfc31dd0ed70655c834588cb.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/uploads/elementor/google-fonts/css/roboto.css?ver=1744053933": {
+      "local_path": "assets/4a092aca6dfde450cab3b6c5f0aa8d58ded3dd7ecf745d5b86cc51ba09d72c88.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-includes/css/dist/block-library/style.min.css?ver=6.9.4": {
+      "local_path": "assets/3b44e208bba827e614cf1e36e639e3c7cfb849771fb17e99bb38e14022d30d16.css",
+      "content_type": "text/css"
+    }
+  },
+  "heuristics": {
+    "script_src_count": 30,
+    "meaningful_elements": 122,
+    "text_content_length": 10502
+  }
+}
