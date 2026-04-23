@@ -1,0 +1,152 @@
+{
+  "version": "1.0",
+  "tool": "website_one_page",
+  "seed_url": "https://www.learner.org/wp-content/interactive/haberplant/haber.php",
+  "seed_origin": "https://www.learner.org:443",
+  "seed_host": "www.learner.org",
+  "final_url": "https://www.learner.org/wp-content/interactive/haberplant/haber.php",
+  "final_host": "www.learner.org",
+  "origin_lock_mode": "host_only",
+  "captured_at": "2026-04-23T18:22:38.900625Z",
+  "base_href_used": false,
+  "base_href_value": null,
+  "budgets": {
+    "max_pages": 1,
+    "max_assets": 200,
+    "max_assets_per_page": 200,
+    "max_redirects": 5,
+    "max_css_import_depth": 2,
+    "max_html_bytes": 2097152,
+    "max_css_bytes": 1048576,
+    "max_asset_bytes": 104857600,
+    "max_total_asset_bytes": 52428800
+  },
+  "budgets_used": {
+    "pages": 1,
+    "assets": 24,
+    "total_asset_bytes": 1192170
+  },
+  "counts": {
+    "html_pages": 1,
+    "assets_total": 27,
+    "assets_included": 24,
+    "assets_excluded": 3
+  },
+  "excluded": [
+    {
+      "url": "data:image/png;base64,iVBORw0KGg[...]QmCC",
+      "reason": "invalid_scheme"
+    },
+    {
+      "url": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VkZWRlZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iOTYlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2VkZWRlZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=",
+      "reason": "invalid_scheme"
+    },
+    {
+      "url": "https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516",
+      "reason": "cross_origin_blocked"
+    }
+  ],
+  "mapping": {
+    "https://www.learner.org/wp-content/interactive/haberplant/H_css/Factory_V0.css": {
+      "local_path": "assets/d62f02b85563b69c866a5f65de925591daaf9555b3c7f514a8fc994d4fba3158.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_css/SF_print.css": {
+      "local_path": "assets/c11bc7b2c07b0405b3e2c1cb6c9cebbcfc2ac35de36bf7e040d6aeb3c8352995.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_css/SF_style.css": {
+      "local_path": "assets/e1c75fa85a6b7cdfec2f8641c9e3200fdc247a9e1d4c97e8c91c4ba855b58d44.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_css/bootstrap.css": {
+      "local_path": "assets/113eea92bbd540794a0ad17c87e830ba2bde1f0e047e906d99230b23bce572ae.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_css/jquery.fancybox.css": {
+      "local_path": "assets/44dc3585ecba9cb177b66bfcbd861adde70868373a0a868643cf912a2352d46e.css",
+      "content_type": "text/css"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_images/AmoniaFactoryH2_180.png": {
+      "local_path": "assets/9eff7fc69eba65f6cee35c6970cb909603dc1afb68b95f7866829caefb2082bf.png",
+      "content_type": "image/png"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_images/Fire/NewFire1.gif": {
+      "local_path": "assets/4229fa43d1624d41c223e47d0617ad3da3cb6577eacb94051546ba868dacd1cf.gif",
+      "content_type": "image/gif"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_images/GrayClock.png": {
+      "local_path": "assets/5ee1ab4ca1aa814e43f97c137d449846350b68d98adb9ff14a9cea394f25892e.png",
+      "content_type": "image/png"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_images/bg_inside3.png": {
+      "local_path": "assets/c8d3525bc09316e1dee3e4a7cb3809f55fc44789ffaed25fcb087f1ff3a6ba45.png",
+      "content_type": "image/png"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_images/bg_outside5.png": {
+      "local_path": "assets/005c4fba1ffc7b56de5a36de42bdec58842a63eefe72fd861c9229c29c4935c2.png",
+      "content_type": "image/png"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_images/blue_down.png": {
+      "local_path": "assets/da410871bb91c539811a34b1117ccb2589cb02c85def99fa23e9fccafdb61bad.png",
+      "content_type": "image/png"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_images/cancel.png": {
+      "local_path": "assets/3e14fad956fe09d99947039fbc8e001c4d7236b8d7e740604da97338ae4720e7.png",
+      "content_type": "image/png"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_images/dk_blue_down.png": {
+      "local_path": "assets/d786ca25c705b0fa1fab59314eb5e591d995a9e470926f4c105c15cf6253a9d4.png",
+      "content_type": "image/png"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_images/dk_green_up.png": {
+      "local_path": "assets/4bd1bfd57677b32b72d3657b9c92dbf187e628f8f293a6eb3ba69537f7dee562.png",
+      "content_type": "image/png"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_images/fan2.png": {
+      "local_path": "assets/ace74818e7cfbc040147a39f7bf7daf17a57b68ea83b68d49ef5d80c40b50d22.png",
+      "content_type": "image/png"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_images/green_down.png": {
+      "local_path": "assets/7a5ada1bd851ca172c1335f322ce68c404ddb32fe4c3b9852c5e52394d5f286d.png",
+      "content_type": "image/png"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_images/industrial.jpg": {
+      "local_path": "assets/711f8eb1b0f6fe58a35833b09367414d229e6234857b5374e49e985fcf815788.jpeg",
+      "content_type": "image/jpeg"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_images/lt_blue_up.png": {
+      "local_path": "assets/7c764b692be071a27e07ddb695fefc6f9105a3e84b4da26ac550e80b3b545e6a.png",
+      "content_type": "image/png"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_images/purple_up.png": {
+      "local_path": "assets/715326259cda5c8a28ccb0b9b5200ff987616722de200acaf0c5ae52243358a5.png",
+      "content_type": "image/png"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_images/question_mark.png": {
+      "local_path": "assets/5ebe78ccd470da395e157909e43588c13f1ad25c12596b0cf7c19c2636e97f39.png",
+      "content_type": "image/png"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_images/red_up.png": {
+      "local_path": "assets/d39e906c5c2e286c3a9793a39b87ed6e7d4f8a3b8014a6f7b9d41ee1767bd525.png",
+      "content_type": "image/png"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_images/smoke_18.png": {
+      "local_path": "assets/647c7e7d1ae8011f672a750fbb311db5cda7bb86946e372097602fba6eea50dd.png",
+      "content_type": "image/png"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_images/teal_down.png": {
+      "local_path": "assets/5d1ceb615e069b914f80467f1e00a28293d7bf2b19267ff00b950e524b17a44a.png",
+      "content_type": "image/png"
+    },
+    "https://www.learner.org/wp-content/interactive/haberplant/H_images/truck.png": {
+      "local_path": "assets/6bf14b7a7f25a6c14c46df4add8a7dd4571d31fe2bed49cdeff64081324c58fd.png",
+      "content_type": "image/png"
+    }
+  },
+  "heuristics": {
+    "script_src_count": 9,
+    "meaningful_elements": 62,
+    "text_content_length": 2925
+  }
+}

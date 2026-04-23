@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<title>Haber: Control Panel</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="" name="description"/>
+<meta content="Alaalden Ibrahim" name="author"/>
+<!-- Le styles -->
+<link href="assets/113eea92bbd540794a0ad17c87e830ba2bde1f0e047e906d99230b23bce572ae.css" media="screen" rel="stylesheet"/>
+<link href="assets/e1c75fa85a6b7cdfec2f8641c9e3200fdc247a9e1d4c97e8c91c4ba855b58d44.css" media="screen" rel="stylesheet"/>
+<link href="assets/c11bc7b2c07b0405b3e2c1cb6c9cebbcfc2ac35de36bf7e040d6aeb3c8352995.css" media="print" rel="stylesheet"/>
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<!-- Fav and touch icons -->
+<link href="assets/d62f02b85563b69c866a5f65de925591daaf9555b3c7f514a8fc994d4fba3158.css" rel="stylesheet"/>
+<link href="assets/44dc3585ecba9cb177b66bfcbd861adde70868373a0a868643cf912a2352d46e.css" rel="stylesheet"/>
+<script src="/wp-content/interactive/haberplant/H_js/jquery-1.9.1.js" type="text/javascript"></script>
+<script src="/wp-content/interactive/haberplant/H_js/jquery1.10.2.min.js" type="text/javascript"></script>
+<script src="/wp-content/interactive/haberplant/H_js/Factory_V0.js" type="text/javascript"></script>
+</head>
+<body style="">
+<!--overlay2-->
+<div class="overlay2" id="overlay2"></div>
+<div class="box" id="boxpopup2"> <a class="boxclose" onclick="closeInstructions('boxpopup2');"></a>
+<div class="content_popup">
+<h2>Control a Haber-Bosch Ammonia Plant</h2>
+<img alt="ammonia truck" class="truck_instr" src="assets/6bf14b7a7f25a6c14c46df4add8a7dd4571d31fe2bed49cdeff64081324c58fd.png"/><p>Use the Haber process to synthesize ammonia from nitrogen and hydrogen. First, adjust the operating parameters on the Control Panel, then click "Run." Try to maximize ammonia (NH<sub>3</sub>) production and net profit during each 24-hour shift. You can compare runs by pressing the "See Results" button. You also may download a <a href="/wp-content/interactive/haberplant/pdfs/lesson_plan.pdf">lesson plan</a> and <a href="/wp-content/interactive/haberplant/pdfs/student_worksheet.pdf">student worksheet</a>.</p>
+</div>
+</div>
+<!--overlay2 Ends -->
+<div id="haber_bg"><div class="header"><h1>Control a Haber-Bosch Ammonia Plant</h1></div>
+<div class="container-fluid">
+<div class="row-fluid">
+<div class="span8">
+<!--CountDown-->
+<div class="Haber_ClockBox">
+<ul id="Haber_Clock">
+<li id="Haber_counter">
+<!-- Count Down -->
+<span class="countdown_section"><span class="countdown_amount" id="countdown_H">0</span><br/>24 Hours</span>
+<!-- Overlay Transparency -->
+<div id="ClockOverlay"></div>
+</li>
+</ul>
+</div>
+<!--CountDown Ended-->
+<div class="anim_big">
+<div class="AmmoniaPlant_container" id="AmmoniaPlant_container">
+<div class="fan" id="fan_L"></div>
+<div class="fan" id="fan3"></div>
+<div id="SmokeChimney"></div>
+<div class="Oven" id="Oven">
+<div id="OvenFire"> <img alt="fire" src="assets/4229fa43d1624d41c223e47d0617ad3da3cb6577eacb94051546ba868dacd1cf.gif"/></div>
+<div id="Oven_Reaction"></div>
+</div>
+<div id="Cooling">
+            
+              =======<br/>
+              =======<br/>
+              =======
+        
+        </div>
+<div id="Oven_Content">
+<!--Argon-->
+<div id="Ar_Particles_Box"></div>
+<!--N3-->
+<div id="N3_Particles_Box"></div>
+<!-- -->
+<!--H2-->
+<div id="H2_Particles_Box"></div>
+<!--NH3-->
+<div id="NH_Particles_Box">
+</div><!--NH_Particles_Box Ends-->
+</div>
+</div><!--AmmoniaPlant_container-->
+</div><!--anim_big-->
+</div>
+<div class="span4">
+<div class="anim_small">
+<div class="truck">
+<div class="Amonia_Output">
+<i id="Amonia_Level"></i>
+</div>
+</div>
+</div>
+</div>
+<!--***-->
+<div class="Full_Formula" id="Full_Formula">
+<!--Formula N3-->
+<div id="N3_Symbol"></div>
+<div id="N3_Formula">N<sub>2</sub> +</div>
+<!-- -->
+<!--Formula H2-->
+<div id="H2_Symbol"></div>
+<div id="H2_Formula">3H<sub>2</sub></div>
+<!--Formula NH3-->
+<div class="Arrows_Formula" id="Arrows_Formula">
+<div class="Arrow1_Formula" id="Arrow1_Formula">←</div>
+<div class="Arrow2_Formula" id="Arrow2_Formula">→</div>
+</div>
+<!--Formula NH3-->
+<div id="NH3_Symbol">
+<div id="NH3_D"><div id="An1"></div> <div id="Ah1"></div> <div id="Ah2"></div> <div id="Ah3"></div></div>
+</div>
+<div class="NH3_Formula" id="NH3_Formula">2NH<sub>3</sub></div>
+</div><!--Full_Formula Ended-->
+<!--***-->
+</div>
+<div class="row-fluid">
+<div class="span8">
+<div class="overlay3" id="overlay3"></div>
+<div id="ControlOverlay">
+<div id="overlay5" onclick="ActiveFactory()">
+<div class="slideActiveFactory">
+	 	The Factory is running, Please wait!
+	</div>
+</div>
+</div>
+<div class="control_panel">
+<h4 class="embossed">Control Panel<span><a onclick="openInstructions('boxpopup2')"><img alt="question mark" src="assets/5ebe78ccd470da395e157909e43588c13f1ad25c12596b0cf7c19c2636e97f39.png"/></a></span></h4>
+<div class="variables">
+<h5 class="embossed"><a class="fancybox" href="#pressure">Pressure</a></h5>
+<div class="overlay_int" id="pressure">
+<h5>Pressure</h5>
+<p>The higher the system pressure, the higher the yield of ammonia. However, higher pressures increase the cost per ton, reducing profits. And, don't go above 950 atmospheres: The plant may explode!</p>
+</div>
+<div class="buttons"> <img alt="arrow up" id="MorePress" onclick="RunDecInc('More','Press_Atm')" src="assets/d39e906c5c2e286c3a9793a39b87ed6e7d4f8a3b8014a6f7b9d41ee1767bd525.png" title="MorePress"/>
+<img alt="arrow down" id="LessPress" onclick="RunDecInc('Less','Press_Atm')" src="assets/7a5ada1bd851ca172c1335f322ce68c404ddb32fe4c3b9852c5e52394d5f286d.png" title="LessPress"/>
+</div>
+<input id="Press_Atm" type="hidden" value="300"/>
+<input class="input-mini panel_input" disabled="" id="ShowPress_Atm" type="text" value="300"/>
+<span>Atm</span>
+</div>
+<div class="variables">
+<h5 class="embossed"><a class="fancybox" href="#temperature">Temperature</a></h5>
+<div class="overlay_int" id="temperature">
+<h5>Temperature</h5>
+<p>Find the sweet spot for temperature in the reaction chamber. Lower temperatures increase the yield; higher temperatures increase the rate of reaction but reduce yield.</p>
+</div>
+<div class="buttons"> <img alt="arrow up" id="MoreMass" onclick="RunDecInc('More','Temp_oC')" src="assets/d39e906c5c2e286c3a9793a39b87ed6e7d4f8a3b8014a6f7b9d41ee1767bd525.png" title="MoreMass"/>
+<img alt="arrow down" id="LessMass" onclick="RunDecInc('Less','Temp_oC')" src="assets/da410871bb91c539811a34b1117ccb2589cb02c85def99fa23e9fccafdb61bad.png" title="LessMass"/>
+</div>
+<input id="Temp_oC" type="hidden" value="200"/>
+<input class="input-mini panel_input" disabled="" id="ShowTemp_oC" type="text" value="200"/>
+<input id="Temp_K" type="hidden" value="473"/>
+<input id="ShowTemp_K" type="hidden" value="473"/>
+<span><sup>o</sup>C</span>
+</div>
+<div class="variables">
+<h5 class="embossed"><a class="fancybox" href="#catalyst">Catalyst</a></h5>
+<div class="overlay_int" id="catalyst">
+<h5>Catalyst</h5>
+<p>Switching to a more expensive catalyst speeds up the reaction time, but adds to costs.</p>
+</div>
+<div class="catalysts">
+<input id="CatalystVal" type="hidden" value="1"/>
+<label><input checked="" id="Regular" name="catalyst" onclick="SetCatalyst('Regular')" type="radio" value="Regular"/>
+            Regular</label>
+<label><input id="Improved" name="catalyst" onclick="SetCatalyst('Improved')" type="radio" value="Improved"/>
+            Improved</label>
+<label><input id="Highest" name="catalyst" onclick="SetCatalyst('Highest')" type="radio" value="Highest Quality"/>
+            Highest Quality</label></div>
+</div>
+<div class="variables">
+<h5 class="embossed"><a class="fancybox" href="#flowrate">Flow Rate</a></h5>
+<div class="overlay_int" id="flowrate">
+<h5>Flow Rate</h5>
+<p>Flow rate (V<sub>o</sub>) determines how fast the reactants circulate through the synthesis loop. A higher (V<sub>o</sub>) produces more ammonia, because ammonia is removed before it can be re-converted back into H<sub>2</sub> and N<sub>2</sub>. However, a high flow rate takes more energy and increases costs.</p>
+</div>
+<div class="buttons"> <img alt="arrow up" id="MoreFlow" onclick="RunDecInc('More','FlowRate')" src="assets/715326259cda5c8a28ccb0b9b5200ff987616722de200acaf0c5ae52243358a5.png" title="MoreFlow"/>
+<img alt="arrow down" id="LessFlow" onclick="RunDecInc('Less','FlowRate')" src="assets/5d1ceb615e069b914f80467f1e00a28293d7bf2b19267ff00b950e524b17a44a.png" title="LessFlow"/>
+</div>
+<input id="FlowRate" type="hidden" value="13800"/>
+<input class="input-mini panel_input" disabled="" id="ShowFlowRate" type="text" value="13800"/>
+<span>V<sub>o</sub></span>
+</div>
+<div class="variables">
+<h5 class="embossed"><a class="fancybox" href="#purge">Purge</a></h5>
+<div class="overlay_int" id="purge">
+<h5>Purge</h5>
+<p>Inert gases build up in the closed system and can slow the reaction. Purge removes a portion of the circulating gas so it can be replaced with fresh reactants, but at a cost.</p>
+</div>
+<div class="buttons"> <img alt="arrow up" id="MorePurge" onclick="RunDecInc('More','PurgeRate')" src="assets/4bd1bfd57677b32b72d3657b9c92dbf187e628f8f293a6eb3ba69537f7dee562.png" title="MorePurge"/>
+<img alt="arrow down" id="LessPurge" onclick="RunDecInc('Less','PurgeRate')" src="assets/da410871bb91c539811a34b1117ccb2589cb02c85def99fa23e9fccafdb61bad.png" title="LessPurge"/>
+</div>
+<input id="PurgeRate" type="hidden" value="10"/>
+<input class="input-mini panel_input" disabled="" id="ShowPurgeRate" type="text" value="10"/>
+<span>%</span>
+</div>
+<div class="variables">
+<h5 class="embossed"><a class="fancybox" href="#cooling">Cooling</a></h5>
+<div class="overlay_int" id="cooling">
+<h5>Cooling</h5>
+<p>To extract the finished product, the gas is chilled and ammonia condenses out as a liquid. If the temperature is lowered, output increases, but there's a tradeoff: higher cost per ton.</p>
+</div>
+<div class="buttons"> <img alt="arrow up" id="MoreCooling" onclick="RunDecInc('More','CoolingoC')" src="assets/7c764b692be071a27e07ddb695fefc6f9105a3e84b4da26ac550e80b3b545e6a.png" title="MoreCooling"/>
+<img alt="arrow down" id="LessCooling" onclick="RunDecInc('Less','CoolingoC')" src="assets/d786ca25c705b0fa1fab59314eb5e591d995a9e470926f4c105c15cf6253a9d4.png" title="LessCooling"/>
+</div>
+<input id="CoolingoC" type="hidden" value="-100"/>
+<input class="input-mini panel_input" disabled="" id="ShowCoolingoC" type="text" value="-100"/>
+<span><sup>o</sup>C</span>
+</div>
+<button class="button" onclick="Reset_Factory_Control()" type="reset">Reset Values</button>
+<button class="button large color green" id="Run" onclick="RunTheFactory()" type="button">Run</button>
+<button class="button color teal" onclick="openResults('Results')" type="button">See Results</button>
+</div>
+</div>
+<div class="span4">
+<div class="output_mon">
+<h4 class="embossed">Output Monitor</h4>
+<table>
+<tbody><tr>
+<td class="output_label"><label><a class="fancybox" href="#NH3yield">NH<sub>3</sub> Yield</a></label></td>
+<td class="output_input"><input id="Yield" type="hidden" value="0"/>
+<input class="input-small" disabled="" id="ShowYield" type="text" value="0"/></td>
+<td class="output_unit">%</td>
+</tr>
+<tr>
+<td class="output_label"><label><a class="fancybox" href="#time_eq">Time to Equilibrate</a></label></td>
+<td class="output_input"><input class="input-small" id="Equilibrate" type="hidden" value="0"/>
+<input class="input-small" disabled="" id="ShowEquilibrate" type="text" value="0"/></td>
+<td class="output_unit">Min</td>
+</tr>
+<tr>
+<td class="output_label"><label><a class="fancybox" href="#tot_out">Total Output</a></label></td>
+<td class="output_input">
+<input class="input-small" id="total_out" type="hidden" value="0"/>
+<input class="input-small" disabled="" id="ShowTotalOutput" type="text" value="0"/>
+<input class="input-small" disabled="" id="HiddenTotalOutput" type="hidden" value="0"/>
+</td>
+<td class="output_unit">Tons/Day</td>
+</tr>
+<tr>
+<td class="output_label"><label><a class="fancybox" href="#v_costs">Variable Costs</a></label></td>
+<td class="output_input"><input class="input-small" id="var_cost" type="hidden" value="$0"/><input class="input-small" disabled="" id="ShowVariableCost" type="text" value="$0"/></td>
+<td class="output_unit">/Ton</td>
+</tr>
+<tr>
+<td class="output_label"><label><a class="fancybox" href="#f_costs">Fixed Costs</a></label></td>
+<td class="output_input"><input class="input-small" id="FixedCost" type="hidden" value="12000"/>
+<input class="input-small" disabled="" id="ShowFixedCost" type="text" value="$12,000"/></td>
+<td class="output_unit">/Day</td>
+</tr>
+<tr>
+<td class="output_label"><label><a class="fancybox" href="#marketprice">Market Price</a></label></td>
+<td class="output_input"><input class="input-small" id="NHMarketPrice" type="hidden" value="$366"/><input class="input-small" disabled="" id="ShowNHMarketPrice" type="text" value="$366"/></td>
+<td class="output_unit">/Ton</td>
+</tr>
+<tr>
+<td class="output_label"><label><a class="fancybox" href="#t_cost">Total Cost</a></label></td>
+<td class="output_input"><input class="input-small" id="CostTon" type="hidden" value="#247.93"/><input class="input-small" disabled="" id="ShowCostTon" type="text" value="$366"/></td>
+<td class="output_unit">/Ton</td>
+</tr>
+</tbody></table>
+</div>
+<div class="profit" id="profitDiv">
+<table>
+<tbody><tr>
+<td class="profit_label"><label><a class="fancybox" href="#netprofit">Net Profit</a></label></td>
+<td class="profit_input"><input class="input-medium" id="NetProfit" type="hidden" value="$0"/><input class="input-small" disabled="" id="ShowNetProfit" type="text" value="$0"/></td>
+<td class="profit_unit">/Day</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div> <!--===========-->
+<!--Popups -->
+<!--==============-->
+<div class="overlay_int" id="NH3yield">
+<h5>NH<sub>3</sub> Yield</h5>
+<p>Partial pressure of ammonia at equilibrium</p>
+</div>
+<div class="overlay_int" id="time_eq">
+<h5>Time to Equilibrate</h5>
+<p>Time to reach equilibrium; linked to rate of production</p>
+</div>
+<div class="overlay_int" id="tot_out">
+<h5>Total Output</h5>
+<p>Ammonia output of the plant in 24 hours</p>
+</div>
+<div class="overlay_int" id="marketprice">
+<h5>Market Price of NH<sub>3</sub></h5>
+<p>Can vary depending on demand and cost of materials</p>
+</div>
+<div class="overlay_int" id="v_costs">
+<h5>Variable Costs</h5>
+<p>Cost of raw materials and energy consumed per ton</p>
+</div>
+<div class="overlay_int" id="f_costs">
+<h5>Fixed Costs</h5>
+<p>Cost of plant operations (labor, etc.) per day</p>
+</div>
+<div class="overlay_int" id="t_cost">
+<h5>Total Cost per Ton</h5>
+<p>Fixed + variable costs amortized per ton of product</p>
+</div>
+<div class="overlay_int" id="netprofit">
+<h5>Net Profit</h5>
+<p>Profit from the sale of the ammonia made in 24 hours</p>
+</div>
+<!--Measurements Table Summary-->
+<!--==============-->
+<!-- -->
+<table class="tableTime" id="tableTime"></table>
+</div><!-- /container -->
+</div>
+<!--overlay3-->
+<div class="box3" id="boxpopup3">
+<div class="content_popup">
+<!--Measurements Table Short-->
+<div id="haber_table">
+<div class="header_interactive">
+<img alt="chemistry logo" src="/wp-content/interactive/images/general/chm_logo2_header.png"/>
+<div class="name_container"><p class="name_user">Name <span></span></p></div>
+</div>
+<div class="header"><h1>Haber-Bosch Ammonia Plant Processing Results</h1><button class="button large color green plant" onclick="openResults('Factory')">Ammonia Plant<br/>Control Center</button> <button class="button large color dkgray plant" onclick="PrintElem('#boxpopup3')">Print<br/>Results</button><button class="button large plant" onclick="ClearResults()">Clear<br/>Results</button><a class="boxclose" onclick="openResults('Factory')"></a></div>
+<div class="scrollContent">
+<table class="table3 scrollTable" id="table3">
+<thead>
+<tr>
+<th scope="col">Run</th>
+<th class="chemistry" scope="col">Pressure<br/>(Atm)</th>
+<th class="chemistry" scope="col">Temp<br/>(<sup>o</sup>C)</th>
+<th class="chemistry" scope="col">Catalyst<br/>(Quality)</th>
+<th class="chemistry" scope="col">Flow Rate<br/>(V<sub>o</sub>)</th>
+<th class="chemistry" scope="col">Purge<br/>(%)</th>
+<th class="chemistry" scope="col">Cooling<br/>(<sup>o</sup>C)</th>
+<th class="chemistry" scope="col">NH<sub>3</sub> Yield<br/>(%)</th>
+<th class="chemistry" scope="col">Time to<br/>Equilibrate<br/>(Min)</th>
+<th class="cost" scope="col">Total Cost<br/> Per Ton<br/>($/Ton)</th>
+<th class="cost" scope="col">Total Output<br/>(Tons/Day)</th>
+<th class="cost" scope="col">Net Profit<br/>($)</th>
+<th class="cost" scope="col">Factory<br/>Status</th>
+</tr>
+</thead>
+<!--<tr> </tr>-->
+<tbody id="table3Body">
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<!--overlay3 Ends -->
+<!-- Le javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/wp-content/interactive/haberplant/H_js/jquery-migrate-1.2.1.js" type="text/javascript"></script>
+<script src="/wp-content/interactive/haberplant/H_js/bootstrap-transition.js" type="text/javascript"></script>
+<script src="/wp-content/interactive/haberplant/H_js/bootstrap-modal.js" type="text/javascript"></script>
+<script src="/wp-content/interactive/haberplant/H_js/bootstrap-button.js" type="text/javascript"></script>
+<script src="/wp-content/interactive/haberplant/H_js/jquery.fancybox.js" type="text/javascript"></script>
+<script>
+$(document).ready(function() {
+ $(".fancybox").fancybox(); // fancybox
+ if ($.browser.msie && $.browser.version == 10) {
+  $("html").addClass("ie10");
+}
+}); // ready
+</script>
+<!-- Le javascript    ================================== -->
+<div id="Moniter" style="color:#000; display:none;">
+<div id="framerate">FPS: ∞</div><div id="ShowOperationT">24</div>
+<input disabled="" id="OperationT" type="hidden" value=""/>
+    N3 in Oven<input disabled="" id="N3_InOven" type="text" value=""/>
+    H2 in Oven<input disabled="" id="H2_InOven" type="text" value=""/>
+    Argon in Oven<input disabled="" id="Ar_InOven" type="text" value=""/>
+<br/>
+    N3 in Oven<input disabled="" id="N3_OvenCount" type="text" value="0"/>
+    H2 in Oven<input disabled="" id="H2_OvenCount" type="text" value="0"/>
+    Argon in Oven<input disabled="" id="Ar_OvenCount" type="text" value="0"/>
+    Amonia Created<input disabled="" id="NH3_Count" type="text" value="0"/>
+<input id="FactoryStatus" type="hidden" value="0"/>
+<input id="FactoryInit" type="hidden" value="0"/>
+<input id="AmoniaInit" type="hidden" value="0"/>
+<input disabled="" id="VariableCosts" type="hidden" value=""/>
+<div id="ShowFactoryStatus">Idle</div>
+</div>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f0ee40a7fe5191b',t:'MTc3Njk2ODUxNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;" width="1"></iframe><script crossorigin="anonymous" data-cf-beacon='{"version":"2024.11.0","token":"74f8dbe7ce4f4d618d62cf4745d8c81e","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' defer="" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"></script>
+</body></html>
