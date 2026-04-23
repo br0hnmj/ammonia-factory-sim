@@ -1,0 +1,1331 @@
+/***********************************************************/
+/***********	Haber Process					************/
+/***********************************************************/
+/* JS for Haber Process by Alaalden Ibrahim alaibrahim@hotmail.com*/
+/*---------------------------------------------------*/
+/*****************************/
+/**   PopUp Instructions    **/
+/*****************************/
+function openInstructions() {
+	$('#overlay2').fadeIn('fast', function() {
+		$('#boxpopup2').css('display','block');
+        $('#boxpopup2').animate({'left':'20%'},500);
+    });
+}
+function closeInstructions(prospectElementID) {
+
+	$(function($) {
+		$(document).ready(function() {
+			$('#' + prospectElementID).css('position','absolute');
+			$('#' + prospectElementID).animate({'left':'-100%'}, 500, function() {
+				$('#' + prospectElementID).css('position','fixed');
+				$('#' + prospectElementID).css('left','-100%');
+				$('#overlay2').fadeOut('fast');
+			});
+		});
+	});
+}
+/*****************************/
+/**   Results 			    **/
+/*****************************/
+/*****************************/
+function PrintElem(elem)
+{
+	Popup($(elem).html());
+}
+function Popup(data) 
+{
+	var mywindow = window.open('', 'Ammonia_Plant_Processing_Results', 'height=400,width=600');
+	mywindow.document.write('<html><head><title>Ammonia_Plant_Processing_Results</title>');
+	/*optional stylesheet*/ mywindow.document.write('<link href="/wp-content/interactive/haberplant/H_css/SF_print.css" rel="stylesheet" media="print">');
+	mywindow.document.write('</head><body >');
+	mywindow.document.write(data);
+	mywindow.document.write('</body></html>');
+	mywindow.document.close();
+	mywindow.focus();
+	mywindow.print();
+	mywindow.close();
+
+	return true;
+}
+/*==========================*/
+function openResults(WhichOne)
+{
+		if(WhichOne == 'Factory')
+			{
+				$("#boxpopup3").css("-webkit-transform","translateX(0%) rotateY(90deg)");
+				$("#boxpopup3").css("-moz-transform","translateX(0%) rotateY(90deg)");
+				$("#boxpopup3").css("-ms-transform","translateX(0%) rotateY(90deg)");
+				$("#boxpopup3").css("transform","translateX(0%) rotateY(90deg)");
+				$("#boxpopup3").css("left","2000px");
+				$("#haber_bg").css("transform","translateX(0%) rotateY(0deg)");
+				$("#haber_bg").css("-ms-transform","translateX(0%) rotateY(0deg)");
+				$("#haber_bg").css("-moz-transform","translateX(0%) rotateY(0deg)");
+				$("#haber_bg").css("-webkit-transform","translateX(0%) rotateY(0deg)");
+			}
+		else
+			{
+				$("#haber_bg").css("-webkit-transform","translateX(0%) rotateY(-90deg)");
+				$("#haber_bg").css("-moz-transform","translateX(0%) rotateY(-90deg)");
+				$("#haber_bg").css("-ms-transform","translateX(0%) rotateY(-90deg)");
+				$("#haber_bg").css("transform","translateX(0%) rotateY(-90deg)");
+				$("#boxpopup3").css("left","2px");
+				$("#boxpopup3").css("transform","translateX(0%) rotateY(0deg)");
+				$("#boxpopup3").css("-ms-transform","translateX(0%) rotateY(0deg)");
+				$("#boxpopup3").css("-webkit-transform","translateX(0%) rotateY(0deg)");
+				$("#boxpopup3").css("-moz-transform","translateX(0%) rotateY(0deg)");
+			 }
+}
+/*==========================*/
+/*****************************/
+/*****************************/
+function formatMoney(value)
+	{
+		var buf = "";
+		var sBuf = "";
+		var j = 0;
+		var valNeg=0;
+		if(value<1)
+			 {value=-1*value;
+			 valNeg=1;}	
+		value = String(value);
+		if (value.indexOf(".") > 0) {
+			buf = value.substring(0, value.indexOf("."));
+		} else {
+			buf = value;
+		}
+		if (buf.length%3!=0&&(buf.length/3-1) > 0) {
+			sBuf = buf.substring(0, buf.length%3) + ",";
+			buf = buf.substring(buf.length%3);
+		}
+		j = buf.length;
+		for (var i = 0; i <(j/3-1); i++) {
+			sBuf = sBuf+buf.substring(0, 3) + ",";
+			buf = buf.substring(3);
+		}
+		sBuf = sBuf+buf;
+		/*if (value.indexOf(".") > 0) {
+			value = sBuf + value.substring(value.indexOf("."));}
+		else {
+		}*/
+		////////////
+			value = sBuf;
+		if(valNeg==1)
+			{value="-$"+value;}
+		else
+			{value="$"+value;}
+		return value;
+ }
+/*****************************/
+/*******   FIRE STARTER  *****/
+/*****************************/
+window.onload = function()
+{
+  /* jQuery.each(jQuery.browser, function(i, val)
+		{
+			$("<div>" + i + " : <span>" + val + "</span>").appendTo( document.body );
+			
+		});*/
+/*    if ($.browser.mozilla) 
+		{
+			//alert( "this is FireFox!: "+ $.browser.version);
+		$("#overlayBad").css("left","2px");
+		}*/
+	function getInternetExplorerVersion()
+// Returns the version of Internet Explorer or a -1
+// (indicating the use of another browser).
+{
+  var rv = -1; // Return value assumes failure.
+  if (navigator.appName == 'Microsoft Internet Explorer')
+  {
+    var ua = navigator.userAgent;
+    var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+    if (re.exec(ua) != null)
+      rv = parseFloat( RegExp.$1 );
+  }
+  return rv;
+}
+function checkVersion()
+{
+  var msg = "You're not using Internet Explorer.";
+  var ver = getInternetExplorerVersion();
+
+  if ( ver > -1 )
+  {
+    if ( ver >= 8.0 ) 
+      msg = "You're using a recent copy of Internet Explorer."
+    else
+      msg = "You should upgrade your copy of Internet Explorer.";
+  }
+  alert( msg );
+}	
+};
+/*==========================*/
+var text="";
+var delay=20;
+var currentChar=1;
+var destination="[not defined]";
+var FactoryStatus='Idle';
+var radius = 10;
+/*==========================*/
+/*****************************/
+var boo = new Image();
+boo.src = 'H_images/x_icon.png';
+/*****************************/
+var grrr = new Image()
+grrr.src = 'H_images/white.png';
+/*****************************/
+/****************************/
+var	nitrogens = [];   
+var	hydrogens = [];
+var Argons =[];
+var ammonia =[];
+///////////////////
+var	nitrogensP = [];   
+var	hydrogensP = [];
+var ArgonsP =[];
+///////////////////
+var Set_N=0;var Set_H=0;var Set_Ar=0;var Set_NH=0;
+/*****************************/
+/*****************************/
+/*==========================*/
+function RunDecInc(Direction,field)
+{
+	
+	var CurValue='';
+	var Setter='';
+	var Set=1;
+	var SetFrom=0;
+	var SetTo=0;
+	if(field=='Temp_oC' || field=='Press_Atm'|| field=='OperationT' || field=='FlowRate'    || field=='PurgeRate'  || field=='CoolingoC' )// 
+		{
+			if(field=='OperationT')
+				{
+				CurValue=parseInt(document.getElementById(""+field+"").value);
+				SetFrom=1;
+				SetTo=24;
+				Setter='Run';
+				}
+			else if(field=='Temp_oC')
+				{
+				CurValue=parseInt(document.getElementById(""+field+"").value);	
+				Temp_K=CurValue+273;
+				Set=25;
+				SetFrom=200;
+				SetTo=600;
+				Setter='Run';
+				}
+			else if(field=='Press_Atm')
+				{
+				CurValue=parseInt(document.getElementById(""+field+"").value);
+				Set=50;
+				SetFrom=100;
+				SetTo=1000;
+				Setter='Run';
+				var PrevFan=parseInt((parseInt(CurValue))/100);
+				if(Direction=='More')
+					{var SetFan=parseInt((parseInt(CurValue)+Set)/100);}
+				///////////////////////////////////
+				else if(Direction=='Less')
+					{var SetFan=parseInt((parseInt(CurValue)-Set)/100);}
+				$("div#fan"+PrevFan+"").attr('id','fan'+SetFan+'');
+				}
+			else if( field=='FlowRate')
+				{
+				CurValue=parseInt(document.getElementById(""+field+"").value);
+				Set=50;
+				SetFrom=10800;
+				SetTo=16800;
+				Setter='Run';
+				}
+			else if(field=='PurgeRate')
+				{
+				CurValue=parseInt(document.getElementById(""+field+"").value);
+				Set=5;
+				SetFrom=0;
+				SetTo=25;
+				Setter='Run';
+				}
+			else if(field=='CoolingoC')
+				{
+				CurValue=parseInt(document.getElementById(""+field+"").value);
+				Set=10;
+				SetFrom=-150;
+				SetTo=100;
+				Setter='Run';
+				}
+			else
+				{Setter='';}
+		}
+	if(Setter=='Run')
+		{
+		if(Direction=='More' && CurValue<SetTo)
+			{
+				ValueHolder=document.getElementById(""+field+"").value=document.getElementById("Show"+field+"").value=parseInt(CurValue)+Set;
+			}
+		///////////////////////////////////
+		else if(Direction=='Less' && CurValue>SetFrom)
+			{ 
+				ValueHolder=document.getElementById(""+field+"").value=document.getElementById("Show"+field+"").value=parseInt(CurValue)-Set;
+			}
+		///////////////////////////////////			
+		if(field=='Temp_oC')
+				{
+					
+				if(500<=ValueHolder && ValueHolder<=600)
+					{ document.getElementById("OvenFire").innerHTML='<img src="/wp-content/interactive/haberplant/H_images/Fire/NewFire5.gif" />';}
+				else if(400<=ValueHolder && ValueHolder<500)
+					{ document.getElementById("OvenFire").innerHTML='<img src="/wp-content/interactive/haberplant/H_images/Fire/NewFire4.gif" />';}
+				else if(300<=ValueHolder && ValueHolder<400)
+					{ document.getElementById("OvenFire").innerHTML='<img src="/wp-content/interactive/haberplant/H_images/Fire/NewFire3.gif" />';}
+				else if(200<ValueHolder && ValueHolder<300)
+					{ document.getElementById("OvenFire").innerHTML='<img src="/wp-content/interactive/haberplant/H_images/Fire/NewFire2.gif" />';}
+				else
+					{document.getElementById("OvenFire").innerHTML='<img src="/wp-content/interactive/haberplant/H_images/Fire/NewFire1.gif" />';}
+				//if(Direction=='More'){canvasDemo.fanUp();}else{canvasDemo.fanDown();}
+				Temp_K = document.getElementById("Temp_K").value=document.getElementById("ShowTemp_K").value=ValueHolder+273;				
+				}
+		///////////////////////////////////		
+		}
+}
+/*==========================*/
+function SetCatalyst(TypeC)
+{
+	
+	var CatSelect=document.getElementById(TypeC);
+	
+		var CaV = document.getElementById('CatalystVal');
+		if(TypeC=='None')
+			{CaV.value=1;CatSelect.checked=true}
+		else if(TypeC=='Regular')
+			{CaV.value=1;CatSelect.checked=true}
+		else if(TypeC=='Improved')
+			{CaV.value=1.2;CatSelect.checked=true}
+		else if(TypeC=='Highest')
+			{CaV.value=1.5;CatSelect.checked=true}
+		else
+			{CaV.value=1;CatSelect.checked=true}
+}
+///////////////////////////////ield=='Temp_oC' || field=='Press_Atm'|| field=='OperationT' || field=='FlowRate'    || field=='PurgeRate'  || field=='CoolingoC'////////
+//*************************************/
+/**************************************/
+function Reset_Factory_Control()
+	{ 
+		var CurValue=parseInt(document.getElementById("Press_Atm").value);
+		var PrevFan=parseInt((parseInt(CurValue))/100);
+		$("div#fan"+PrevFan+"").attr('id','fan2');
+		//canvasDemo.init();
+		document.getElementById("SmokeChimney").innerHTML='';
+		document.getElementById("Temp_oC").value=document.getElementById("ShowTemp_oC").value=parseInt(200);
+		document.getElementById("Temp_K").value=document.getElementById("ShowTemp_K").value=parseInt(473);
+		document.getElementById("Press_Atm").value=document.getElementById("ShowPress_Atm").value=parseInt(300);
+		document.getElementById("OperationT").value=document.getElementById("ShowOperationT").value=parseInt(24);
+		document.getElementById("FlowRate").value=document.getElementById("ShowFlowRate").value=parseInt(13800);
+		document.getElementById("PurgeRate").value=document.getElementById("ShowPurgeRate").value=parseInt(10);
+		document.getElementById("CoolingoC").value=document.getElementById("ShowCoolingoC").value=parseInt(-100);
+		SetCatalyst('Regular');
+	}
+/**************************************/
+function Reset_Factory(extent)
+	{  
+		/////////////////////////////////////////////////
+		document.getElementById("SmokeChimney").innerHTML='';
+		document.getElementById("countdown_H").innerHTML="0";
+		document.getElementById("NH3_Count").value=0;
+		///////////////
+		document.getElementById("N3_OvenCount").value=0;
+		document.getElementById("H2_OvenCount").value=0;
+		document.getElementById("Ar_OvenCount").value=0;
+		document.getElementById("N3_InOven").value=0;
+		document.getElementById("H2_InOven").value=0;
+		document.getElementById("Ar_InOven").value=0;
+		////////////////////////////////////////////////
+		var tbl = document.getElementById("tableTime");
+		while (tbl.firstChild) {
+		  tbl.removeChild(tbl.firstChild);
+		}
+		////////////////////////	$('#Run').animate({'opacity':0}, 100);	
+		// Back up the Truck
+		////////////////////////
+		$('#overlay5').fadeOut('fast', function() {
+			$('.truck').animate({'right':0}, 500);	
+			});
+		////////////////////////
+		document.getElementById('N3_Particles_Box').innerHTML = '';
+		document.getElementById('H2_Particles_Box').innerHTML = '';
+		document.getElementById('Oven_Reaction').innerHTML = '';
+		///////////////////
+		nitrogens = [];   
+		hydrogens = [];
+		Argons =[];
+		ammonia =[];
+		///////////////////
+		nitrogensP = [];   
+		hydrogensP = [];
+		ArgonsP =[];
+		///////////////////
+		var node = document.getElementById("Oven_Reaction");
+			while (node.hasChildNodes()) {node.removeChild(node.lastChild);}
+		var node = document.getElementById("N3_Particles_Box");
+			while (node.hasChildNodes()) {node.removeChild(node.lastChild);}
+		var node = document.getElementById("H2_Particles_Box");
+			while (node.hasChildNodes()) {node.removeChild(node.lastChild);}
+		var node = document.getElementById("Ar_Particles_Box");
+			while (node.hasChildNodes()) {node.removeChild(node.lastChild);}
+		var node = document.getElementById("NH_Particles_Box");
+			while (node.hasChildNodes()) {node.removeChild(node.lastChild);}
+		document.getElementById("ShowFactoryStatus").value=document.getElementById("FactoryStatus").value='Idle';
+		//return false;
+	}
+///////////////////////////////
+function RunTheFactory ()
+{
+	/***************************/  
+	/////////////////////////////////////////////////
+	document.getElementById('ShowTotalOutput').value=0;
+	document.getElementById("ShowCostTon").value=0;
+	document.getElementById("ShowNetProfit").value=0;
+	document.getElementById("ShowYield").value=document.getElementById("Yield").value=0;
+	document.getElementById("ShowEquilibrate").value=document.getElementById("Equilibrate").value=0;
+	document.getElementById('profitDiv').className='profit';
+	/////////////////////////////////////////////////
+	var Temp_oC='';
+	var Press_Atm='';
+	var Temp_K='';
+	var OperationT=24;
+	var OnlyInit=document.getElementById("FactoryInit").value;
+	///////////////////////////////////			
+	Temp_oC=document.getElementById("Temp_oC").value;
+	Temp_K = document.getElementById("Temp_K").value;
+	Press_Atm=document.getElementById("Press_Atm").value;	
+	document.getElementById('Amonia_Level').style.width = "0%";
+	document.getElementById('Amonia_Level').innerHTML = "0Tons";
+	document.getElementById("NH3_Count").value=0;
+	/***************************/
+	var PressureArr=new Array("0","15","30","65","100","150","200","250","300","350","400","450","500","550","600","650","700","750","800","850","900","950","1000"); 
+	var HaberConst = {
+    "200C": {
+        HeatLevel: "200",
+        PT_Vals: "0;28;55;69;83;87;90;92;93;94;94;95;96;96;96.5;97;97;98;98;98;98.5;99;99"
+    },
+    "225C": {
+        HeatLevel: "225",
+        PT_Vals: "0;23;45;59;72;78;84;86;88;90;91;92;93;94;94;95;95;96;96;97;98;98;98"
+    },
+    "250C": {
+        HeatLevel: "250",
+        PT_Vals: "0;17;34;49;63;70;77;80;83;85;87;89;90;91;92;92;92;93;94;95;96;97;97"
+    },
+    "275C": {
+        HeatLevel: "275",
+        PT_Vals: "0;13;26;42;58;64;70;74;78;80;82;85;87;88;89;90;90;91;92;93;94;95;95"
+    },
+    "300C": {
+        HeatLevel: "300",
+        PT_Vals: "0;11;22;37;51;57;63;68;72;75;77;80;82;84;85;86;87;89;90;91;92;93;93"
+    },
+    "325C": {
+        HeatLevel: "325",
+        PT_Vals: "0;10;20;31;41;49;56;60;64;68;71;75;79;80;81;82;83;85;87;88;88;89;90"
+    },
+    "350C": {
+        HeatLevel: "350",
+        PT_Vals: "0;8;16;25;33;42;51;55;59;63;66;69;71;74;77;78;79;81;83;84;84;85;86"
+    },
+    "375C": {
+        HeatLevel: "375",
+        PT_Vals: "0;5;10;20;29;37;44;49;53;57;60;63;66;69;72;74;75;77;78;79;80;81;82"
+    },
+    "400C": {
+        HeatLevel: "400",
+        PT_Vals: "0;4;8;16;24;31;38;43;47;51;55;58;61;64;66;68;70;72;73;75;76;77;78"
+    },
+    "425C": {
+        HeatLevel: "425",
+        PT_Vals: "0;4;7;14;20;26;32;37;41;45;49;52;55;58;60;62;64;67;69;71;72;73;73"
+    },
+    "450C": {
+        HeatLevel: "450",
+        PT_Vals: "0;3;5;11;17;22;27;31;35;40;44;47;49;52;54;56;58;60;62;64;66;67;68"
+    },
+    "475C": {
+        HeatLevel: "475",
+        PT_Vals: "0;2;4;9;14;19;23;27;31;35;38;41;43;46;48;51;54;56;57;59;60;62;63"
+    },
+    "500C": {
+        HeatLevel: "500",
+        PT_Vals: "0;2;3;8;12;16;20;24;27;30;33;36;38;40;42;45;47;49;51;53;54;56;57"
+    },
+    "525C": {
+        HeatLevel: "525",
+        PT_Vals: "0;1;2;6;10;14;17;20;23;26;28;31;33;35;37;40;42;45;47;48;49;51;52"
+    },
+    "550C": {
+        HeatLevel: "550",
+        PT_Vals: "0;1;1;5;8;12;15;18;20;22;24;26;28;31;33;35;37;39;41;42;43;45;46"
+    },
+    "575C": {
+        HeatLevel: "575",
+        PT_Vals: "0;1;1;4;7;10;13;15;17;19;20;22;24;26;28;32;35;36;36;37;37;39;40"
+   },
+    "600C": {
+        HeatLevel: "600",
+        PT_Vals: "0;1;1;4;6;9;11;13;15;17;18;20;21;23;24;26;27;28;29;30;31;32;33"
+    }
+};
+		/***************************/
+		var CoolingoC=document.getElementById("CoolingoC").value;
+		var PurgeRate=document.getElementById("PurgeRate").value;
+		var FlowRate=document.getElementById("FlowRate").value;
+		var Press_LookUp = PressureArr.indexOf(""+Press_Atm+"");
+		var HeatLevel = Temp_oC;
+		var PT_LookUp = HaberConst["" + HeatLevel +"C"];  
+		var BreakPT= PT_LookUp.PT_Vals.split(";");
+		var CAT= document.getElementById('CatalystVal').value;// 1.5 best // Improved 1.2
+		//alert (CAT);
+		var NetYieldPNH3=(BreakPT[Press_LookUp])*CAT; 
+		var NominalOutput=142*NetYieldPNH3/(5*8.2);
+		if(Press_Atm<200)	
+			{NominalOutput=0;}//This cut off process at low pressure
+		//Equilibrium equation term P4  =60000-(CAT*15000)
+		var Equi_Equa_P4  =60000-(CAT*15000)
+		var Equi_Equa_P5  =((6460+(1.1*Press_Atm))/Temp_K)-14;
+		var Equi_Equa_P6  =Math.exp(Equi_Equa_P5);
+		var Equi_Equa_P7  =(3.08/Equi_Equa_P6)+(2*Press_Atm);
+		var Equi_Equa_P8  =Math.sqrt(((Equi_Equa_P7*Equi_Equa_P7)-(4*Press_Atm*Press_Atm)));
+		var Equi_Equa_P9  =(Equi_Equa_P7-Equi_Equa_P8)/2;
+		var Equi_Equa_P10 =100*(Equi_Equa_P9/Press_Atm)
+		var Equi_Equa_P12 =(-Equi_Equa_P4/(2*Temp_K))
+		var Equi_Equa_P13 =Math.exp((Equi_Equa_P12+30));
+		var Equi_Equa_P14 =Equi_Equa_P9/Equi_Equa_P13;
+		var TimeEquilibrate='';
+		if (Equi_Equa_P14>86400 || Press_Atm==1000){TimeEquilibrate="> a day!!"}
+		else {TimeEquilibrate= Equi_Equa_P14/60;
+			  TimeEquilibrate= Math.round(TimeEquilibrate*Math.pow(10,2))/Math.pow(10,2);
+			 }
+		//////////////////////
+		if(TimeEquilibrate==0)
+			{TimeEquilibrate='>0.01';}
+		//////////////////////
+		document.getElementById("Equilibrate").value=TimeEquilibrate;	
+		//////////////////////////////////////////////////////
+		var OutputPressurefactor=(79.6*(1-Math.exp(-0.002858*Press_Atm))+1.687)/47.51561;
+		var OutputRateFactor='';
+		if(Equi_Equa_P14>25000)
+			{OutputRateFactor=0;}
+		else
+			{
+				if(Equi_Equa_P14>1500)
+					{OutputRateFactor=0.9;}
+				else{OutputRateFactor=1;}
+			}	
+		var OutputFlowratefactor=(0.0069*FlowRate+41)/140+0.03;
+		var PInert=8;
+		var OutputPurgefactor=(-281*(PInert/100)+163)/140;
+		//Variable Costs
+		/**********************************************/
+		document.getElementById("ShowOperationT").value=OperationT-0.5;
+		NetYieldPNH3= Math.round((NetYieldPNH3)*Math.pow(10,2))/Math.pow(10,2);
+		var NH3NetYield= Math.round((NetYieldPNH3/8.2)*Math.pow(10,2))/Math.pow(10,2);
+		
+		document.getElementById("Yield").value=NH3NetYield;
+		var OutputCoolingfactor=((-8.84*(NetYieldPNH3/8.2)*(-10/(CoolingoC*0.1))+186.18)/142);
+		//
+		var FinalTotalOutput='';
+		if(NominalOutput*OutputPressurefactor*OutputRateFactor*OutputFlowratefactor*OutputPurgefactor*OutputCoolingfactor<0){FinalTotalOutput="No output!";}
+		else {FinalTotalOutput=(NominalOutput*OutputPressurefactor*OutputRateFactor*OutputFlowratefactor*OutputPurgefactor*OutputCoolingfactor);}
+		var CollectedOutput='\n\n :OutputPressurefactor: '+OutputPressurefactor+' \n:OutputRateFactor: '+OutputRateFactor+'  :\nOutputFlowratefactor: '+OutputFlowratefactor+' \n :OutputPurgefactor: '+OutputPurgefactor+':\nOutputCoolingfactor:'+OutputCoolingfactor+'';
+		FinalTotalOutput= Math.round(FinalTotalOutput*Math.pow(10,2))/Math.pow(10,2);
+		if(Press_Atm==1000){FinalTotalOutput=0;}
+		if(isNaN(FinalTotalOutput)){FinalTotalOutput=0;}
+		
+		document.getElementById("HiddenTotalOutput").value=FinalTotalOutput;
+		NominalOutput= Math.round(NominalOutput*Math.pow(10,2))/Math.pow(10,2);
+		/////////////////////
+		//NetProfit
+		/////////////////////
+		FactoryStatus='Running';
+		var VariableCosts=(120+(8*(CAT*CAT))+(FlowRate/1000)+(140*PurgeRate/100)+(5*(-1)*CoolingoC*0.1));
+		/////////////////////
+		var FixedCosts=12000;
+		var MarketPriceofNH3=366
+		document.getElementById("VariableCosts").value=VariableCosts
+		var TotalCostperTon='';
+		if(FinalTotalOutput==0 || Press_Atm==1000){TotalCostperTon="No output!";}
+		else{TotalCostperTon=VariableCosts+(FixedCosts/FinalTotalOutput);
+		TotalCostperTon= Math.round(TotalCostperTon*Math.pow(10,2))/Math.pow(10,2);}
+		var NetProfitperton='';
+		if(TotalCostperTon=="No output!" || Press_Atm==1000)
+			{NetProfitperton="Shutdown!";}
+		else
+			{NetProfitperton=MarketPriceofNH3-TotalCostperTon;}
+		var NetEarningsPerDay='';
+		if(TotalCostperTon=="No output!" || Press_Atm==1000)
+			{NetEarningsPerDay='-12000';FactoryStatus="Shutdown!";}
+		else
+			{NetEarningsPerDay=FinalTotalOutput*NetProfitperton;
+		NetEarningsPerDay= Math.round(NetEarningsPerDay*Math.pow(10,2))/Math.pow(10,2);}
+		VariableCosts= Math.round(VariableCosts*Math.pow(10,2))/Math.pow(10,2);
+		
+		document.getElementById("ShowVariableCost").value=document.getElementById("var_cost").value="$"+VariableCosts;
+		document.getElementById("CostTon").value=TotalCostperTon;
+		document.getElementById("NetProfit").value=NetEarningsPerDay;
+		document.getElementById("ShowFactoryStatus").value=document.getElementById("FactoryStatus").value=FactoryStatus;
+		//NetProfit
+		/////////////////////
+		PrintResults (Temp_oC,Press_Atm,CoolingoC,PurgeRate,FlowRate,NH3NetYield,TimeEquilibrate,FinalTotalOutput,VariableCosts,TotalCostperTon,NetEarningsPerDay,FactoryStatus,CAT);
+	if(Press_Atm==1000)
+		{
+			////////////////////////////
+			//// Aladdin New
+			$("#haber_bg").animate({opacity: 0.25}, 7);
+			$("#haber_bg").animate({left: '-=4%'},7);
+			$("#haber_bg").animate({left: '+=8%'},7);
+			$("#haber_bg").animate({opacity: 0.50},7);
+			$("#haber_bg").animate({opacity: 1},7);
+			$("#haber_bg").animate({opacity: 0.50},7);
+			$("#haber_bg").animate({opacity: 0.25},7);
+			$("#haber_bg").animate({left: '-=8%'},7);
+			$("#haber_bg").animate({left: '+=4%'},7);
+			$("#haber_bg").animate({opacity: 1.00}, 7);
+			alert ('Pressure is too high! Explosion at the factory!');
+			////////////////////////////
+		}
+	else
+	{
+		////////////////////////
+		// Back up the Truck
+		////////////////////////
+		$('#overlay5').fadeIn('fast', function() {
+		$('.truck').animate({'right':65}, 2500);	
+			});	
+		////////////////////////
+		/***************************/	
+		//////////////////////////
+		if(FactoryStatus=="Running" || FactoryStatus=="Shutdown!")
+			{		
+				if(FactoryStatus=="Running")
+					{
+						if(FinalTotalOutput=='103.16')
+								{Set_H=29;Set_N=9;Set_Ar=4;/*alert ('min');*/}
+						else if(FinalTotalOutput=='290.66')
+								{Set_H=59;Set_N=19;Set_Ar=8;/*alert ('max');*/}
+						else if(FinalTotalOutput>'99' && FinalTotalOutput<'400')
+								{
+									var Differ_1= 0;
+									Differ_1=(FinalTotalOutput-103.16)/20
+									Differ_1=Math.round(Differ_1*Math.pow(10,0))/Math.pow(10,0);
+									Set_N=9+Differ_1;
+									Set_H=(29+(Differ_1*3));
+									Set_Ar=4+Differ_1;
+								}
+						else{Set_H=29;Set_N=9;Set_Ar=4;}
+						/***********************/
+					}
+				else{	Set_H=5;
+						Set_N=2;
+						Set_Ar=1;
+					}
+				///////////////////////////////////
+				/**************************************/
+				/**				H2					 **/
+				/*********************Set_H************/
+				$('#H2_0').animate({'opacity':0.7}, 50);
+				hydrogens.push(new Reaction(211,100,10, '#FF3','H2',1)); 
+				/**************************************/
+				/**				N3					 **/
+				/**************************************/
+				$('#N3_0').animate({'opacity':0.7}, 50);
+				nitrogens.push(new Reaction(211,40,10, '#6688ff','N3',1)); 
+				/**************************************/
+				/**				Argon				 **/
+				/**************************************/
+				$('#Ar_0').animate({'opacity':0.7}, 150);
+				Argons.push(new Reaction(211,40,9, '#000000','Ar',1));
+				/**************************************/
+				if(OnlyInit==0)
+					{
+						H2Track();
+						N3Track();
+						ARTrack();
+					}
+				/**************************************/
+		}//if running or shut down		
+	/**************************************/	
+	/*========*/
+	/*========*/
+	// number of rows in the table:
+	document.getElementById("countdown_H").innerHTML="0";
+	var numRows = document.getElementById('tableTime').rows.length;
+	// index of last row:
+	var now = +new Date();
+	var x = new TimedQueue(500);
+	for (var i = 0; i <= 24; i++) 
+			{
+				
+				x.add(function(){
+					BuildRow(i);					
+					});
+			}
+	x.run();
+	/*========*/
+	}//End else pressure not 1000
+}
+/**************************************/
+/*==========================*/
+function BuildRow(i) 
+{
+		var TotalOutput=parseInt(document.getElementById('HiddenTotalOutput').value);
+		var ShowTotalOutput=parseInt(document.getElementById('ShowTotalOutput').value);
+		var idxLastRow = document.getElementById('tableTime').rows.length;
+		var table=document.getElementById("tableTime");
+		var row=table.insertRow(idxLastRow);
+		var CountNow=document.getElementById("countdown_H").innerHTML;
+		document.getElementById("countdown_H").innerHTML=''+(idxLastRow)+'';
+		if(FactoryStatus=="Running")
+				{ //alert ('Pump'); && CountNow<20 && CountNow>16
+					CreateAmonia('');
+				}
+		if(document.getElementById("countdown_H").innerHTML=="24")
+				{
+					var perCent=parseInt(TotalOutput);
+					var perCent2=(perCent/10);
+					Haber_NetProfits(TotalOutput);
+					document.getElementById('ShowTotalOutput').value=""+TotalOutput+"";
+					var MoneyFormat=formatMoney(document.getElementById("NetProfit").value);
+					document.getElementById("ShowCostTon").value=document.getElementById("CostTon").value;
+					document.getElementById("ShowNetProfit").value=""+MoneyFormat;
+					if(perCent2>88){perCent2=88;}
+					document.getElementById('Amonia_Level').style.width = ""+perCent2+"%";
+					document.getElementById('Amonia_Level').innerHTML = ""+TotalOutput+"Tons";
+					document.getElementById("ShowYield").value=document.getElementById("Yield").value;
+					document.getElementById("ShowEquilibrate").value=document.getElementById("Equilibrate").value;
+					if(FactoryStatus=="Shutdown!")
+						{document.getElementById('profitDiv').className='loss';}
+					else if(FactoryStatus=="Running")
+						{
+							if(document.getElementById("NetProfit").value<1)
+								 {document.getElementById('profitDiv').className='loss';}
+							else {document.getElementById('profitDiv').className='gain';}
+						}
+					Reset_Factory('Reaction');
+					
+				}
+		var cell0=row.insertCell(0);
+		cell0.innerHTML=""+(idxLastRow)+"";
+		///////////////////////////////////
+		var CurAmonia=parseInt(document.getElementById("NH3_Count").value);
+		var AmoniaInit=document.getElementById("AmoniaInit").value;
+		if(FactoryStatus=="Running" && CurAmonia>5)
+			{
+					if(AmoniaInit==0)
+					{
+						document.getElementById("AmoniaInit").value=1;
+						$('#Amonia_Level').animate({'opacity':1}, 50);
+						$('.Amonia_Output ').animate({'opacity':1}, 50);
+					}
+				var perCent=parseInt((idxLastRow/24)*TotalOutput);
+				var perCent2=(perCent/10);
+				Haber_NetProfits(perCent);
+					if(perCent2>88){perCent2=88;}
+				document.getElementById('ShowTotalOutput').value=""+perCent+"";
+				document.getElementById('Amonia_Level').style.width = ""+perCent2+"%";
+				document.getElementById('Amonia_Level').innerHTML = ""+perCent+"Tons";
+			}
+}
+/*==========================*/
+/**************************************/
+function Haber_NetProfits(FinalTotalOutput)
+	{
+		FinalTotalOutput=parseInt(FinalTotalOutput);
+		var FixedCosts=12000;
+		var MarketPriceofNH3=366
+		var VariableCosts=parseInt(document.getElementById("VariableCosts").value);
+		/////////////////////
+		//NetProfit
+		/////////////////////
+		var TotalCostperTon='';
+		if(FinalTotalOutput==0){TotalCostperTon="No output!";}
+		else if(isNaN(FinalTotalOutput)){TotalCostperTon="No output!";}
+		else{TotalCostperTon=VariableCosts+(FixedCosts/FinalTotalOutput);
+		TotalCostperTon= Math.round(TotalCostperTon*Math.pow(10,2))/Math.pow(10,2);}
+		var NetProfitperton='';
+		if(TotalCostperTon=="No output!")
+			{NetProfitperton="Shutdown!";}
+		else
+			{NetProfitperton=MarketPriceofNH3-TotalCostperTon;}
+		var NetEarningsPerDay='';
+		if(TotalCostperTon=="No output!")
+			{
+				NetEarningsPerDay='-12000';FactoryStatus="Shutdown!";
+			}
+		else
+			{
+				NetEarningsPerDay=FinalTotalOutput*NetProfitperton;
+				NetEarningsPerDay= Math.round(NetEarningsPerDay*Math.pow(10,2))/Math.pow(10,2);
+			}
+		var MoneyFormat1=formatMoney(TotalCostperTon);
+		var MoneyFormat2=formatMoney(NetEarningsPerDay);
+		document.getElementById("ShowCostTon").value=""+MoneyFormat1;
+		if(NetEarningsPerDay>0)
+			{document.getElementById("ShowNetProfit").value=""+MoneyFormat2;}
+		//NetProfit
+		/////////////////////	
+	}
+/**************************************/
+// The Reaction class
+Reaction = (function() {
+// constructor
+function Reaction(x,y,radius,color,ElemT,Elem){
+    this.center = {x:x, y:y};  
+    this.radius = radius;               
+    this.color = color;                 
+	var Type= this.Type = ElemT;           
+    this.EleNum = Elem;
+    this.dx = 1;               
+    this.dy = 1;        
+    this.boundaryHeight = $('#'+Type+'_Particles_Box').height();
+    this.boundaryWidth = $('#'+Type+'_Particles_Box').width();
+	this.dom  = $('<p class="'+Type+'_Particles" id="'+ElemT+'_'+Elem+'"></p>').appendTo('#'+Type+'_Particles_Box');
+    // the rectange div a Particles
+    this.dom.width(radius*0.5);
+    this.dom.height(radius*0.5);
+    this.dom.css({'border-radius':radius,background:color});    
+          
+  }
+/**************************************/
+/*********	Move Particle 	*******/
+/**************************************/
+// AI move and bounce the Particles
+Reaction.prototype.AImove1 = function()
+{
+	
+    var diameter = this.radius * 2;                                               
+    var radius = this.radius;
+	/////////////////////////
+	var Type= this.Type;
+	var NextElem=this.EleNum+1;
+	var NextPos =(this.EleNum*5)+250;
+	/////////////////////////
+	if(this.center.x==NextPos && this.center.y==100 && NextElem<=Set_H && Type=="H2")
+		{		
+		
+			hydrogens.push(new Reaction(211,100,radius, '#FF3','H2',NextElem)); 
+			$('#'+Type+'_'+NextElem+'').animate({'opacity':0.7}, 5);
+		}
+	/////////////////////////
+	if(this.center.x==272 && this.center.y==40 && NextElem<=Set_N && Type=="N3")
+		{		
+			nitrogens.push(new Reaction(211,40,radius, '#6688ff','N3',NextElem)); 
+			$('#'+Type+'_'+NextElem+'').animate({'opacity':0.7}, 5);
+		}
+	/////////////////////////
+	if(this.center.x==272 && this.center.y==40 && NextElem<=Set_Ar && Type=="Ar")
+		{	
+			Argons.push(new Reaction(211,40,radius, '#000000','Ar',NextElem)); 
+			$('#'+Type+'_'+NextElem+'').animate({'opacity':0.7}, 5);
+		}
+	/////////////////////////
+	if (this.center.y==40 && this.center.x==455)
+		 {
+			var OnlyInit=document.getElementById("FactoryInit").value
+			var CurValue=parseInt(document.getElementById(""+Type+"_OvenCount").value);
+				CurValue=CurValue+1;
+			document.getElementById(""+Type+"_OvenCount").value=CurValue;
+			////////////////////////
+			$('#'+Type+'_'+this.EleNum+'').animate({'opacity':0}, 0);
+			if (Type=="H2")
+				{
+					hydrogensP.push(new Bounce(10,10,10, '#FF3','H2',this.EleNum)); 
+				}
+			if (Type=="N3")
+				{
+					nitrogensP.push(new Bounce(12,20,10, '#6688ff','N3',this.EleNum));
+				}
+			if (Type=="Ar")
+				{
+					ArgonsP.push(new Bounce(10,25,10, '#000000','Ar',this.EleNum)); 
+				}
+			if(OnlyInit==0)
+				{ 
+					BounceH2(); 	 
+					BounceN3(); 	
+					BounceAR(); 	
+					document.getElementById("FactoryInit").value=1;
+					OnlyInit=1;
+				}	
+		 }
+	/////////////////////////
+	if (this.center.y==135 && this.center.x==570)
+		{
+			var CurValue2=parseInt(document.getElementById(""+Type+"_OvenCount").value);
+				CurValue2=CurValue2-1;
+			document.getElementById(""+Type+"_OvenCount").value=CurValue2;
+			$('#'+Type+'_'+this.EleNum+'').animate({'opacity':1}, 0);
+			var d = document.getElementById("Oven_Reaction");
+			var d_nested = document.getElementById("Particle"+Type+"_"+this.EleNum+"");
+			var throwawayNode = d.removeChild(d_nested); 
+    	} 
+	/////////////////////////
+	// The Particles Track
+	/////////////////////////
+	if (this.center.x<296) 
+		{	
+			this.dom.css({left: this.center.x + this.dx}); 
+			this.placeAtFactory(this.center.x+ this.dx,this.center.y);  
+	    } 
+    else if (this.center.x==296 && this.center.y>40 && Type=="H2") 
+		{
+			this.dom.css({"margin-top": this.center.y - this.dy});
+			this.placeAtFactory(this.center.x,this.center.y- this.dy);  
+    	}
+	else if (this.center.y==40 && this.center.x<360)
+		 {
+			this.dom.css({left: this.center.x + this.dx}); 
+			this.placeAtFactory(this.center.x+ this.dx,this.center.y);  
+    	} 
+	else if (this.center.x==360 && this.center.y>20) 
+		{
+			this.dom.css({"margin-top": this.center.y - this.dy});
+			this.placeAtFactory(this.center.x,this.center.y- this.dy);  
+		}
+	else if (this.center.y==20 && this.center.x<455)
+		 {
+			this.dom.css({left: this.center.x + this.dx}); 
+			this.placeAtFactory(this.center.x+ this.dx,this.center.y);  
+    	} 
+	 else if (this.center.x==455 && this.center.y<135) 
+		{
+			this.dom.css({"margin-top": this.center.y + this.dy});
+			this.placeAtFactory(this.center.x,this.center.y+ this.dy);
+    	} 
+	else if (this.center.y==135 && this.center.x<570)
+		 {
+			this.dom.css({left: this.center.x + this.dx}); 
+			this.placeAtFactory(this.center.x+ this.dx,this.center.y);  
+    	}
+	else if (this.center.x==570 && this.center.y>75 && Type=="Ar" && (NextElem ==2 || NextElem ==4 || NextElem ==6 || NextElem ==8)) 
+		{
+			this.dom.css({"margin-top": this.center.y - this.dy});
+			this.placeAtFactory(this.center.x,this.center.y- this.dy);  
+    	} 	
+	else if (this.center.y==75 && this.center.x<=644  && Type=="Ar" && (NextElem ==2 || NextElem ==4 || NextElem ==6 || NextElem ==8))
+		{
+			this.dom.css({left: this.center.x + this.dx}); 
+			this.placeAtFactory(this.center.x+ this.dx,this.center.y); 
+    	} 	
+	else if (this.center.y==75 && this.center.x==645  && Type=="Ar" && (NextElem ==2 || NextElem ==4 || NextElem ==6 || NextElem ==8)) 
+		{
+			this.center.y=40;
+			this.center.x=211;
+			this.dom.css({"margin-top": 40});
+			this.dom.css({"left": 211});
+			this.placeAtFactory(this.center.x,this.center.y);
+			///////////////////////////////////////////////////////
+			if(!$.browser.msie)
+					{
+						var a=0;
+						if(document.getElementById("ShowFactoryStatus").value=='Running')
+						{
+						for(;a<3;a+=1)
+							{
+								setTimeout(function b(){var a=Math.random()*1e3+5e3,c=$("<div />",{"class":"smoke",css:{opacity:0,left:Math.random()*1+2}});
+								$(c).appendTo("#SmokeChimney");
+								$.when($(c).animate({opacity:1},{duration:a/4,easing:"linear",queue:false,complete:function(){$(c).animate({opacity:0},{duration:a/3,easing:"linear",queue:false})}}),$(c).animate({bottom:$("#SmokeChimney").height()},{duration:a,easing:"linear",queue:false})).then(function(){$(c).remove();b()})},Math.random()*3e3)}
+						}//if//document.getElementById("ShowFactoryStatus").value=='Running'
+					}
+				else{
+						"use strict";
+						var a=0;
+						if(document.getElementById("ShowFactoryStatus").value=='Running')
+						{
+						for(;a<1;a+=1)
+							{
+								setTimeout(function b(){var a=Math.random()*1e3+5e3,c=$("<div />",{"class":"smoke",css:{left:Math.random()*10+2}});
+								$(c).appendTo("#SmokeChimney");
+								$.when($(c).animate({},{duration:a/4,easing:"linear",queue:false,complete:function(){$(c).animate({},{duration:a/3,easing:"linear",queue:false})}}),$(c).animate({bottom:$("#SmokeChimney").height()},{duration:a,easing:"linear",queue:false})).then(function(){$(c).remove();b()})},Math.random()*3e3)
+							}
+						}//if//document.getElementById("ShowFactoryStatus").value=='Running'
+					}
+					////////////
+		} 	
+	else if (this.center.x==570 && this.center.y>30) 
+		{
+			this.dom.css({"margin-top": this.center.y - this.dy});
+			this.placeAtFactory(this.center.x,this.center.y- this.dy);  
+    	} 
+	else if (this.center.y==30 && this.center.x>485)
+		 {
+			this.dom.css({left: this.center.x - this.dx}); 
+			this.placeAtFactory(this.center.x- this.dx,this.center.y);  
+    	} 
+	else if (this.center.x==485 && this.center.y>20) 
+		{
+			this.dom.css({"margin-top": this.center.y - this.dy});
+			this.placeAtFactory(this.center.x,this.center.y- this.dy);  
+    	} 
+	else if (this.center.y==20 && this.center.x>455)
+		 {
+			this.dom.css({left: this.center.x - this.dx}); 
+			this.placeAtFactory(this.center.x- this.dx,this.center.y);  
+    	} 
+    };
+	///////////////////////
+	/**************************************/
+	// Place the Particle at center x, y
+	Reaction.prototype.placeAtFactory = function(x,y)
+		{
+			this.center.x = Math.round(x);
+			this.center.y = Math.round(y);
+		};
+	/**************************************/
+	return Reaction;
+})();
+/**************************************/
+/**************************************/
+/**************************************/
+/*********	Bounce Particle 	*******/
+/**************************************/
+// The Bounce class
+Bounce = (function() {
+// constructor
+function Bounce(x,y,radius,color,ElemT,Elem){
+    this.center = {x:x, y:y};  
+    this.radius = radius;               
+    this.color = color;
+    this.dx = 1;               
+    this.dy = 1;        
+    this.boundaryHeight = $('#Oven_Reaction').height();
+    this.boundaryWidth = $('#Oven_Reaction').width();
+	this.dom  = $('<p class="Particles" id="Particle'+ElemT+'_'+Elem+'"></p>').appendTo('#Oven_Reaction');
+    // the rectange div a Particles
+    this.dom.width(radius*0.7);
+    this.dom.height(radius*0.7);
+    this.dom.css({'border-radius':radius,background:color});
+    this.placeAtCenter(x,y);         
+  }
+  // Place the Particle at center x, y
+  Bounce.prototype.placeAtCenter = function(x,y){
+    this.dom.css({top: Math.round(y- this.radius), left: Math.round(x - this.radius)});
+    this.center.x = Math.round(x);        
+    this.center.y = Math.round(y);             
+  };
+  // move and bounce the Particles
+  Bounce.prototype.move = function(){
+    var diameter = this.radius * 2;                                               
+    var radius = this.radius;  
+    if (this.center.x - radius < 0 || this.center.x + radius > this.boundaryWidth ) {
+      this.dx = -this.dx;
+    }
+    if (this.center.y - radius < 0 || this.center.y  + radius > this.boundaryHeight ) {
+      this.dy = -this.dy;
+    }
+	/////////////////////////////
+    this.placeAtCenter(this.center.x + this.dx ,this.center.y +this.dy);
+  };
+  ///////////////////////
+  return Bounce;
+})();
+///////////////////
+/**************************************/
+/**************************************/
+function CreateAmonia(ElemT)
+	{
+		var CurValue_N3=parseInt(document.getElementById("N3_OvenCount").value);
+		var CurValue_H2=parseInt(document.getElementById("H2_OvenCount").value);
+		var CurValue_NH3=parseInt(document.getElementById("NH3_Count").value);
+		var AmoniaInit=document.getElementById("AmoniaInit").value;
+		CurValue_NH3=CurValue_NH3+1;
+		if(CurValue_H2>=3 && CurValue_N3>=1)
+			{
+				$('.NH3').animate({'opacity':1}, 50);
+				ammonia.push(new Production(450,133,10, '','NH3',CurValue_NH3));
+				/**************************************/
+				var newCurValue=1000+CurValue_NH3;
+				/**			Fresh H2				 **/
+				/*********************Set_H************/
+				$('#H2_'+newCurValue+'').animate({'opacity':0.7}, 50);
+				hydrogens.push(new Reaction(211,100,10, '#FF3','H2',newCurValue)); 
+				/**************************************/
+				/**				N3					 **/
+				/**************************************/
+				$('#N3_'+newCurValue+'').animate({'opacity':0.7}, 50);
+				nitrogens.push(new Reaction(211,40,10, '#6688ff','N3',newCurValue)); 
+				/**************************************/
+				/**************************************/
+				if(AmoniaInit==0)
+					{NH3Track();}
+		}			
+	}
+///////////////////////////////////////
+/**************************************/
+/**************************************/
+/*******	Particle Production  	***/
+/**************************************/
+// The Production class
+Production = (function() {
+// constructor
+function Production(x,y,radius,color,ElemT,Elem){
+    this.center = {x:x, y:y};  
+    this.radius = radius;               
+    this.color = color;
+	var Type= this.Type = ElemT;           
+    this.EleNum = Elem;
+    this.dx = 1;               
+    this.dy = 1;        
+    this.boundaryHeight = $('#NH_Particles_Box').height();
+    this.boundaryWidth = $('#NH_Particles_Box').width();
+	this.dom  = $('<div class="NH3" id="NH3_'+Elem+'"><div id="An1"></div> <div id="Ah1"></div> <div id="Ah2"></div> <div id="Ah3"></div></div>').appendTo('#NH_Particles_Box');
+    // the rectange div a Particles
+    this.dom.width(radius*0.7);
+    this.dom.height(radius*0.7);
+   // this.dom.css({'border-radius':radius,background:color});
+    this.Produce(x,y);         
+  }
+  // Place the Particle at center x, y
+  Production.prototype.Produce = function(x,y)
+		{
+			this.center.x = Math.round(x);
+			this.center.y = Math.round(y);
+		};
+  // move and bounce the Particles
+  var CurValue_NH3;
+  Production.prototype.moveNH = function()
+  {
+	var diameter = this.radius * 2;                                               
+	var radius = this.radius;  
+	/////////////////////////////////////////////
+	var A_Level=parseInt(document.getElementById('Amonia_Level').style.width);
+	var TotalOutput=parseInt(document.getElementById('HiddenTotalOutput').value);
+	var CurAmonia=parseInt(document.getElementById("NH3_Count").value);
+	/////////////////////////////////////////////	 
+	if(this.EleNum==3 || this.EleNum==6)
+		{
+			if (this.center.y==133 && this.center.x<570)
+				{
+					this.dom.css({left: this.center.x + this.dx}); 
+					this.Produce(this.center.x+ this.dx,this.center.y);  
+				}
+			else if (this.center.x==570 && this.center.y>30) 
+				{
+					this.dom.css({"margin-top": this.center.y - this.dy});
+					this.Produce(this.center.x,this.center.y- this.dy);  
+				} 
+			else if (this.center.y==30 && this.center.x>485)
+				 {
+					this.dom.css({left: this.center.x - this.dx}); 
+					this.Produce(this.center.x- this.dx,this.center.y);  
+				} 
+			else if (this.center.x==485 && this.center.y>10) 
+				{
+					this.dom.css({"margin-top": this.center.y - this.dy});
+					this.Produce(this.center.x,this.center.y- this.dy);  
+				} 
+			else if (this.center.y==10 && this.center.x>450)
+				 {
+					this.dom.css({left: this.center.x - this.dx}); 
+					this.Produce(this.center.x- this.dx,this.center.y);  
+				}
+			else if (this.center.x==450 && this.center.y<133) 
+				{
+					this.dom.css({"margin-top": this.center.y + this.dy});
+					this.Produce(this.center.x,this.center.y+ this.dy);
+				}
+		}
+	else
+		{
+			if (this.center.y==133 && this.center.x<570)
+				 {
+					this.dom.css({left: this.center.x + this.dx}); 
+					this.Produce(this.center.x+ this.dx,this.center.y);  
+				}
+			else if (this.center.x==570 && this.center.y<159) 
+				{
+					this.dom.css({"margin-top": this.center.y + this.dy});
+					this.Produce(this.center.x,this.center.y+ this.dy);  
+				}
+			else if (this.center.y==159 && this.center.x<643)
+				 {
+					this.dom.css({left: this.center.x + this.dx}); 
+					this.Produce(this.center.x+ this.dx,this.center.y);  
+				} 
+			else if (this.center.y==159 && this.center.x==643)
+				 {
+					 document.getElementById("NH3_Count").value=parseInt(document.getElementById("NH3_Count").value)+1;
+					this.dom.css({"opacity": "0"});
+				 } 
+		}
+   };
+  ///////////////////////
+  return Production;
+})();
+///////////////////
+/**************************************/
+///////////////////
+///////////////////
+var BounceN3 = function(){
+ /////////////////
+  for (var i = 0; i < nitrogensP.length; i++)
+  		{nitrogensP[i].move();}
+  ///////////////////
+  setTimeout(BounceN3, 4);    
+};
+///////////////////
+///////////////////
+var BounceAR = function(){
+ /////////////////
+  for (var i = 0; i < ArgonsP.length; i++)
+  		{ArgonsP[i].move();}
+  ///////////////////
+  setTimeout(BounceAR, 5);    
+};
+///////////////////
+var BounceH2 = function()
+{
+ 	///////////////////
+   for (var i = 0; i < hydrogensP.length; i++)
+		{hydrogensP[i].move();}
+  ///////////////////
+  setTimeout(BounceH2, 6);    
+};
+///////////////////
+/**************************************/
+/**************************************/
+
+///////////////////
+var NH3Track = function()
+{
+	var CurAmonia=parseInt(document.getElementById("NH3_Count").value);
+ 	///////////////////
+	
+   for (var i = 0; i < ammonia.length; i++)
+		{ammonia[i].moveNH();}
+  ///////////////////
+  setTimeout(NH3Track, -9);
+};
+///////////////////
+var N3Track = function()
+{
+	var CurN3=parseInt(document.getElementById("N3_OvenCount").value);
+ 	///////////////////
+   for (var i = 0; i < nitrogens.length; i++)
+		{nitrogens[i].AImove1();}
+  ///////////////////
+ setTimeout(N3Track, 2);
+};
+///////////////////
+///////////////////
+var ARTrack = function()
+{
+ 	///////////////////
+   for (var i = 0; i < Argons.length; i++)
+		{Argons[i].AImove1();}
+  ///////////////////
+  setTimeout(ARTrack, 5);    
+};
+///////////////////
+var H2Track = function()
+{
+ 	///////////////////
+   for (var i = 0; i < hydrogens.length; i++)
+		{hydrogens[i].AImove1();}
+  ///////////////////
+  setTimeout(H2Track, 4);    
+};
+///////////////////
+/**************************************/
+/**************************************/
+///////////////////////////////
+function PrintResults (Temp_oC,Press_Atm,CoolingoC,PurgeRate,FlowRate,NH3NetYield,TimeEquilibrate,FinalTotalOutput,VariableCosts,TotalCostperTon,NetEarningsPerDay,FactoryStatus,CAT)
+	{
+		var CATname='';
+		if(CAT==1){CATname='Regular';}
+		else if(CAT==1.5){CATname='best';}
+		else if(CAT==1.2){CATname='Improved';}
+		else{CATname='Regular';}
+		///////////////////////////////////////////////////////////////
+		var idxLastRow = document.getElementById('table3Body').rows.length;
+		var table=document.getElementById("table3Body");
+		var row=table.insertRow(idxLastRow);
+		var cell0=row.insertCell(0);
+		var cell1=row.insertCell(1);
+		var cell2=row.insertCell(2);
+		var cell3=row.insertCell(3);
+		var cell4=row.insertCell(4);
+		var cell5=row.insertCell(5);
+		var cell6=row.insertCell(6);
+		var cell7=row.insertCell(7);
+		var cell8=row.insertCell(8);
+		var cell9=row.insertCell(9);
+		var cell10=row.insertCell(10);
+		var cell11=row.insertCell(11);
+		var cell12=row.insertCell(12);/*
+		var cell13=row.insertCell(13);*/
+		cell0.innerHTML=""+(idxLastRow+1)+"";
+		cell1.innerHTML=''+Press_Atm+'';
+		cell2.innerHTML=''+Temp_oC+'';
+		cell3.innerHTML=''+CATname+'';
+		cell4.innerHTML=''+FlowRate+'';
+		cell5.innerHTML=''+PurgeRate+'%';
+		cell6.innerHTML=''+CoolingoC+'';
+		cell7.innerHTML=''+NH3NetYield+'';
+		cell8.innerHTML=''+TimeEquilibrate+'';
+		cell9.innerHTML=''+TotalCostperTon+'';
+		cell10.innerHTML=''+FinalTotalOutput+'';
+		var MoneyFormat=formatMoney(NetEarningsPerDay);
+		cell11.innerHTML=''+MoneyFormat+'';
+		cell12.innerHTML=''+FactoryStatus+'';/*
+		cell13.innerHTML='';*/
+	}
+///////////////////////////////
+/*************************************/
+/*==========================*/
+var TimedQueue = function(defaultDelay){
+    this.queue = [];
+    this.index = 0;
+    this.defaultDelay = defaultDelay || 1500;
+};
+
+TimedQueue.prototype = {
+    add: function(fn, delay){
+        this.queue.push({
+            fn: fn,
+            delay: delay
+        });
+    },
+    run: function(index){
+        (index || index === 0) && (this.index = index);
+        this.next();
+    },
+    next: function(){
+        var self = this
+        , i = this.index++
+        , at = this.queue[i]
+        , next = this.queue[this.index]
+        if(!at) return;
+        at.fn();
+        next && setTimeout(function(){
+		//////////////////////////////////////
+        self.next();
+        }, next.delay||this.defaultDelay);
+    },
+    reset: function(){
+		this.index = 0;
+    }
+}
+/*========================*/
+/*************************************/
+function ClearResults()
+{
+	var r=confirm("Are you sure you want to clear your results?");
+	if (r==true)
+	  {var table=document.getElementById("table3Body").innerHTML='';}
+	else
+	  {	  }
+	
+}
+/*************************************/
+function ActiveFactory()
+{
+	$('.slideActiveFactory').slideToggle();
+}
